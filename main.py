@@ -13,7 +13,7 @@ class Gui(tk.Tk):
         self.segundos = 0
         self.counter_active = False
 
-        # Leo el fichero de configuración
+        # Leer el fichero de configuración
         print('leyendo el fichero de configuración')
         config = configparser.ConfigParser()
         config.sections()
@@ -22,7 +22,7 @@ class Gui(tk.Tk):
         self.distraccion = int(config['POMODORO_DEFAULT']['distractionTime'])
         print('fichero de configuración leído')
 
-        # Configuro la ventana
+        # Configurar la ventana
         self.geometry('600x400')
         self.title('Pomodoro Club')
         self.rowconfigure(0, weight=1)
@@ -33,16 +33,16 @@ class Gui(tk.Tk):
         self.columnconfigure(2, weight=3)
         self.columnconfigure(3, weight=1)
 
-        # Configuro el contador de tiempo visual
+        # Configurar el contador de tiempo visual
         self.guitimer = tk.Label(text=f'0:00:00')
         self.guitimer.config(font=("Arial", 50))
         self.guitimer.grid(row=1, column=0, sticky='NSWE', columnspan=4)
 
-        # Configuro el botón de inicio y parada de la cuenta atrás
+        # Configurar el botón de inicio y parada de la cuenta atrás
         self.boton1 = ttk.Button(self, text='Start Counter', command=lambda: self.start_countdown())
         self.boton1.grid(row=2, column=0, sticky='NSWE', columnspan=4)
 
-        # Configuro las cajas para los tiempos del pomodoro
+        # Configurar las cajas para los tiempos del pomodoro
         self.produccion = tk.StringVar(value='25')
         self.etiqueta_produccion = tk.Label(text='Minutos de producción')
         self.etiqueta_produccion.grid(row=0, column=0)
@@ -57,7 +57,7 @@ class Gui(tk.Tk):
         self.entrada_distraccion = ttk.Entry(self, width=2, textvariable=self.distraccion)
         self.entrada_distraccion.grid(row=0, column=3)
 
-    # Métodos para iniciar, mantener y detener el contador
+    # Iniciar, mantener y detener el contador
     def start_countdown(self):
         print('Starting countdown')
         self.boton1.config(text='Stop counter', command=lambda: self.stop_counter())
